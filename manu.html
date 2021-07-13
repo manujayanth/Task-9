@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background-image: url("Kubernetes.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.d1 {
+  background-color:DarkMagenta;
+  color: white;
+  border: 2px solid black;
+  margin: 20px;
+  padding: 20px; 
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+</head>
+</html>
+
+
+<script>
+function lw()  {
+in1.style.fontSize = "large";
+in1.style.color = "black";
+in1.style.backgroundColor = "white";
+var i = document.getElementById("in1").value
+var xhr = new XMLHttpRequest()
+// xhr.onload
+
+xhr.open("GET","http://192.168.56.101/cgi-bin/jayi.py?x=" + i, true);
+
+xhr.send();
+
+// output from above url
+
+xhr.onload = function() {
+        var output = xhr.responseText;
+    var result = output.fontsize(5)
+        document.getElementsByClassName('d1')[0].innerHTML= result;
+
+}
+
+}
+</script>
+<center>
+<h1 style="color:Chocolate;">
+Kubernetes</h1> <input id="in1" placeholder="Enter the K8S Command" />
+<br/>
+<pre>
+<div class="d1"><h2>Output shows here.....</h2></div>
+</pre>
+<button onclick="lw()" class="button" style="vertical-align:middle"><span> </span>click</button>
+</center>
